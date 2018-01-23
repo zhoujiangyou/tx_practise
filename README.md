@@ -4,4 +4,5 @@
 ---
 1. 确保php版本在5.5之上。
 2. 确保seat.xml拥有可读可写权限。
-3.  执行 php index.php 即可
+3.  执行 php make_testdata.php 生成数据
+4. 执行 php index.php 
