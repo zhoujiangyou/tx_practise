@@ -20,6 +20,10 @@ class xmlData implements dataOperate{
         $this->path=$xmlPath;
     }
 
+    /**
+     * xml文件读取
+     * @return array
+     */
     public function readData(){
         $xml=@simplexml_load_file($this->path);
         if(empty($xml)){
@@ -30,6 +34,11 @@ class xmlData implements dataOperate{
         }
         return $seats;
     }
+
+    /**
+     * xml文件写入
+     * @param $data
+     */
     public function writeDate($data){
         $amount=count($data);
         //固定7800 ，不过这边优化成动态配置，防止之后体育场变了。。。
