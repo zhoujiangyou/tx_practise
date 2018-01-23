@@ -9,7 +9,7 @@
 
 /**
  * 根据条件计算得出座位最多26排
- * 根据当前座位号定义 ，讲座位号转换成 X区X排X号位。
+ * 根据当前座位号定义 ，讲座位号转换成 X排X号位。
  * 可根据数值大小 确定在第几区，
  * 根据等差数列求和公式倒推在第几排，最后计算出在第几位.
  * @param $num
@@ -105,10 +105,14 @@ function calPaiSum($pai){
 /**
  * 计算第n排共有多少座位
  * @param $pai
+ * @return number
  */
 function calAllSum($pai){
-
-    return pow($pai,2)+49*$pai;
+     if($pai){
+         return pow($pai,2)+49*$pai;
+     }else{
+         exit("callAllSum param  error");
+     }
 }
 
 /**
@@ -116,12 +120,12 @@ function calAllSum($pai){
  * @param $data
  */
 function dump($data){
-
     echo "ticks just as follows \n";
+    if(count($data)){
     foreach ($data as $value){
         echo "{$value['area']} area, {$value['pai']} row , {$value['wei']} position \n";
+      }
     }
-
 }
 
 

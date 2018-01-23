@@ -32,6 +32,7 @@ class xmlData implements dataOperate{
     }
     public function writeDate($data){
         $amount=count($data);
+        //固定7800 ，不过这边优化成动态配置，防止之后体育场变了。。。
         if($amount==7800){
             $_fp = @fopen('./seat.xml','w');
             if(!$_fp){
@@ -68,15 +69,21 @@ class mainDeal{
     }
 
 
+    /**
+     * 读取存储的数据
+     * @return mixed
+     */
     public function read(){
      return $this->operateObject->readData();
     }
 
+    /**
+     * 写入更新数据
+     * @param $data
+     * @return mixed
+     */
     public function write($data){
         return $this->operateObject->writeDate($data);
     }
 }
-//
-//$main = new mainDeal(new xmlData('seat.xml'));
-//var_dump($main->read());
 

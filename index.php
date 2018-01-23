@@ -39,9 +39,9 @@ if($num>0&&$num<6){
         $seat['pai']=$patwei['pai'];
         $seat['wei']=$patwei['wei'];
         $seats[]=$seat;
-        $data[$seatNum-1]['ischoosed'] =1; //数组键值比实际座位大1
+        $data[$seatNum-1]['ischoosed'] =1; //数组键值比实际座位大1 将选中的座位状态置为1
     }
-    $main->write($data);
+    $main->write($data); //更新座位信息
     //美化输出
     dump($seats);
 }else{
