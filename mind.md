@@ -31,7 +31,7 @@ A B C D  每个区域座位数为1950 总数就是4*1950 = 7800
 主要分为这几层：  
 请求分发：DNS+nginx  
 服务：多台服务器集群 （异步处理请求）  
-数据cache：Redis Cluster  将全部座位数据提前写入 具体见如下图：    
+数据cache：Redis Cluster  将全部座位数据提前写入 还有7800个座位资格 具体见如下图：    
 [架构图](https://www.processon.com/view/link/5a684894e4b010a6e72eadf2)
 数据持久化层：最后还是要将数据保存在硬盘上。
 
