@@ -77,13 +77,7 @@ class xmlData implements dataOperate{
      * xml文件读取,读取状态为选中的座位 ischoosed = 1
      * @return array
      */
-    public function readChoosedData(){}
-
-    /**
-     * xml文件读取,读取状态为未选中的座位 ischoosed = 0
-     * @return array
-     */
-    public function readUnchoosedData(){
+    public function readChoosedData(){
         $data = $this->data;
         if(count($data)!=0){
             foreach ($data as $key=>$value){
@@ -95,6 +89,35 @@ class xmlData implements dataOperate{
         }
         return [];
     }
+
+    /**
+     * xml文件读取,读取状态为未选中的座位 ischoosed = 0
+     * @return array
+     */
+    public function readUnchoosedData(){
+        $data = $this->data;
+        if(count($data)!=0){
+            foreach ($data as $key=>$value){
+                if($value['ischoosed']==0){
+                    unset($data[$key]);
+                }
+            }
+            return $data;
+        }
+        return [];
+    }
+
+    /**
+     *获取优区域座位
+     */
+    public function readBestData(){}
+
+    /**
+     *获取良区域座位
+     */
+    public function readCommonData(){}
+
+    public function readBadData(){}
 }
 //主处理类
 class mainDeal{
