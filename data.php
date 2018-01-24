@@ -109,18 +109,70 @@ class xmlData implements dataOperate{
 
     /**
      *获取未选择优区域座位
+     * seatNum B前十排:1951-2540 C前十排:3901-4490 总位数为590*2 = 1180
+     * 数据对应实际键值小1
+     *
      */
-    public function getBestUnchoosedSeat(){}
+    public function getBestUnchoosedSeat(){
+        $data = $this->data;
+        if(count($data)!=0){
+            foreach ($data as $key=>$value){
+                if(($key>1949&&$key<2540)||($key>3899&&$key<4490)){
+                    if($value['ischoosed']==1){
+                        unset($data[$key]);
+                    }
+                }else{
+                    unset($data[$key]);
+                }
+            }
+            return $data;
+        }
+        return [];
+    }
 
     /**
      *获取未选择良区域座位
+     * seatNum A前十排：1-590 D前十排：5851-6440 B 11-16排:2541-3900 C 11-16排:4491-5850  总位数3900
+     * 数据对应实际键值小1
      */
-    public function getComUnchoosedSeat(){}
+    public function getComUnchoosedSeat(){
+        $data = $this->data;
+        if(count($data)!=0){
+            foreach ($data as $key=>$value){
+                if(($key>=0&&$key<590)||($key>5849&&$key<6440)||($key>2539&&$key<3900)||($key>4489&&$key<5850)){
+                    if($value['ischoosed']==1){
+                        unset($data[$key]);
+                    }
+                }else{
+                    unset($data[$key]);
+                }
+            }
+            return $data;
+        }
+        return [];
+    }
 
     /**
      *获取未选择列区域
+     * seatNUm A 11-16排:591-1950 D 11-16 :6441-7800 总位数为 2720
+     * 数据对应实际键值小1
      */
-    public function getBadUnchoosedSeart(){}
+    public function getBadUnchoosedSeart(){
+        $data = $this->data;
+        if(count($data)!=0){
+            foreach ($data as $key=>$value){
+                if(($key>589&&$key<1950)||($key>6439&&$key<7800)){
+                    if($value['ischoosed']==1){
+                        unset($data[$key]);
+                    }
+                }else{
+                    unset($data[$key]);
+                }
+            }
+            return $data;
+        }
+        return [];
+    }
 }
 //主处理类
 class mainDeal{
@@ -129,7 +181,6 @@ class mainDeal{
     {
         $this->operateObject=$object;
     }
-
 
     /**
      * 读取存储的数据

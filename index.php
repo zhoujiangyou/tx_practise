@@ -37,6 +37,9 @@ if($num>0&&$num<6){
     $main =new mainDeal(new xmlData("seat.xml"));
     $data = $main->read();
     $unchoosedDate = $main->readUnchoosed();
+    if($unchoosedDate<$num){
+        exit("tickets not enough ,very sorry");
+    }
     for($i=1;$i<=$num;$i++){
         do{
             $seatNum = array_rand($unchoosedDate,1); // 从未选取座位中随机选取一个座位

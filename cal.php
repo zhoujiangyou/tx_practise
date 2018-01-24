@@ -97,7 +97,7 @@ function calPaiSum($pai){
     if($pai==0){
        $sum =0;
     }else{
-        $sum =50+2*($pai);
+        $sum =48+2*($pai);
     }
     return $sum;
 }
@@ -113,6 +113,16 @@ function calAllSum($pai){
      }else{
          exit("callAllSum param  error");
      }
+}
+
+
+/**
+ * 根据限定row 计算得出最佳区域范围
+ * @param $orw
+ */
+function calRangeArea($orw){
+
+    //todo
 }
 
 /**
