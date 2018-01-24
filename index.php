@@ -20,7 +20,7 @@
 //
 
 // TODO 具体思路在mind.md文件中
-
+// 已经实现的是随机座位，没有加各种条件逻辑选择
 
 require_once "cal.php";
 require_once "data.php";

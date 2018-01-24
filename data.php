@@ -108,16 +108,19 @@ class xmlData implements dataOperate{
     }
 
     /**
-     *获取优区域座位
+     *获取未选择优区域座位
      */
-    public function readBestData(){}
+    public function getBestUnchoosedSeat(){}
 
     /**
-     *获取良区域座位
+     *获取未选择良区域座位
      */
-    public function readCommonData(){}
+    public function getComUnchoosedSeat(){}
 
-    public function readBadData(){}
+    /**
+     *获取未选择列区域
+     */
+    public function getBadUnchoosedSeart(){}
 }
 //主处理类
 class mainDeal{
