@@ -31,7 +31,7 @@ class xmlData implements dataOperate{
     public function readData(){
         $xml=@simplexml_load_file($this->path);
         if(empty($xml)){
-           exit("content read faild");
+           exit("content read faild,please run 'php make_testdata.php' first");
         }
         foreach($xml->seat as $Xseat) {
             $this->data[] = get_object_vars($Xseat);//获取对象全部属性，返回数组

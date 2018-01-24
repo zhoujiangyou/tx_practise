@@ -15,6 +15,7 @@
 //        D区左下角从5851开始，到B区右上角为7800
 //        每排的座位数依次从左到右从1开始递增，如：1,2,3,4....50
 // 暂定用xml存储座位信息
+// 随机数选取的时候,获取未选中的数据，从未选中数据中随机选取。
 
 
 require_once "cal.php";
@@ -23,6 +24,9 @@ require_once "data.php";
 echo "************** welcome ***************** \n";
 echo "please enter the nums you want to get \n";
 $num =trim(fgets(STDIN));
+if(!is_numeric($num)){
+exit("please enter the number of numeric");
+}
 $seats=[];
 if($num>0&&$num<6){
     //获取全部座位数据
@@ -50,7 +54,6 @@ if($num>0&&$num<6){
 
 echo "******************************* \n";
 exit();
-
 
 
 
