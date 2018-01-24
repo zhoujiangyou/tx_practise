@@ -30,9 +30,9 @@ A B C D  每个区域座位数为1950 总数就是4*1950 = 7800
 架构方面：
 主要分为这几层：
 请求分发：CDN+nginx
-服务：多台服务器集群 （异步处理请求，swoole）
+服务：多台服务器集群 （异步处理请求）
 数据：Redis Cluster  将全部座位数据提前写入 具体见如下图：  
-(架构图)[https://www.processon.com/view/link/5a684894e4b010a6e72eadf2]
+![架构设计图](https://www.processon.com/view/link/5a684894e4b010a6e72eadf2)
 
 
 
