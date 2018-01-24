@@ -81,7 +81,7 @@ class xmlData implements dataOperate{
         $data = $this->data;
         if(count($data)!=0){
             foreach ($data as $key=>$value){
-                if($value['ischoosed']==1){
+                if($value['ischoosed']==0){
                     unset($data[$key]);
                 }
             }
@@ -98,7 +98,7 @@ class xmlData implements dataOperate{
         $data = $this->data;
         if(count($data)!=0){
             foreach ($data as $key=>$value){
-                if($value['ischoosed']==0){
+                if($value['ischoosed']==1){
                     unset($data[$key]);
                 }
             }
