@@ -22,8 +22,8 @@
 // TODO 具体思路在mind.md文件中
 // 已经实现的是随机座位，没有加各种条件逻辑选择
 
-require_once "cal.php";
-require_once "data.php";
+require_once "application/cal.php";
+require_once "application/data.php";
 
 echo "************** welcome ***************** \n";
 echo "please enter the nums you want to get \n";
@@ -34,7 +34,7 @@ exit("please enter the number of numeric");
 $seats=[];
 if($num>0&&$num<6){
     //获取全部座位数据
-    $main =new mainDeal(new xmlData("seat.xml"));
+    $main =new mainDeal(new xmlData("./data/seat.xml"));
     $data = $main->read();
     $unchoosedDate = $main->readUnchoosed();
     if($unchoosedDate<$num){

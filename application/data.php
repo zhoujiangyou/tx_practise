@@ -12,6 +12,9 @@ interface dataOperate{
     public function writeDate($data);
     public function readChoosedData();
     public function readUnchoosedData();
+    public function getBestUnchoosedSeat();
+    public function getComUnchoosedSeat();
+    public function getBadUnchoosedSeart();
 }
 
 class xmlData implements dataOperate{
@@ -47,7 +50,7 @@ class xmlData implements dataOperate{
         $amount=count($data);
         //固定7800 ，不过这边优化成动态配置，防止之后体育场变了。。。
         if($amount==7800){
-            $_fp = @fopen('./seat.xml','w');
+            $_fp = @fopen($this->path,'w');
             if(!$_fp){
                 exit('系统错误，文件不存在！');
             }
@@ -204,6 +207,30 @@ class mainDeal{
      */
     public function write($data){
         return $this->operateObject->writeDate($data);
+    }
+
+    /**
+     * 获取未选中最优区域位置
+     * @return mixed
+     */
+    public function getBest(){
+        return $this->operateObject->getBestUnchoosedSeat();
+    }
+
+    /**
+     * 获取未选中一般区域位置
+     * @return mixed
+     */
+    public function getCom(){
+        return $this->operateObject->getComUnchoosedSeat();
+    }
+
+    /**
+     * 获取未选中 最差区域位置
+     * @return mixed
+     */
+    public function getBad(){
+        return $this->operateObject->getBadUnchoosedSeart();
     }
 }
 
