@@ -10,14 +10,18 @@
 interface dataOperate{
     public function readData();
     public function writeDate($data);
+    public function readChoosedData();
+    public function readUnchoosedData();
 }
 
 class xmlData implements dataOperate{
 
     protected  $path;
+    protected  $data;
     public function __construct($xmlPath)
     {
         $this->path=$xmlPath;
+        $this->data=[];
     }
 
     /**
@@ -30,9 +34,9 @@ class xmlData implements dataOperate{
            exit("content read faild");
         }
         foreach($xml->seat as $Xseat) {
-            $seats[] = get_object_vars($Xseat);//获取对象全部属性，返回数组
+            $this->data[] = get_object_vars($Xseat);//获取对象全部属性，返回数组
         }
-        return $seats;
+        return $this->data;
     }
 
     /**
@@ -68,6 +72,29 @@ class xmlData implements dataOperate{
             fclose($_fp);
         }
     }
+
+    /**
+     * xml文件读取,读取状态为选中的座位 ischoosed = 1
+     * @return array
+     */
+    public function readChoosedData(){}
+
+    /**
+     * xml文件读取,读取状态为未选中的座位 ischoosed = 0
+     * @return array
+     */
+    public function readUnchoosedData(){
+        $data = $this->data;
+        if(count($data)!=0){
+            foreach ($data as $key=>$value){
+                if($value['ischoosed']==1){
+                    unset($data[$key]);
+                }
+            }
+            return $data;
+        }
+        return [];
+    }
 }
 //主处理类
 class mainDeal{
@@ -86,6 +113,13 @@ class mainDeal{
      return $this->operateObject->readData();
     }
 
+    /**
+     * 读取存储的数据 未选中数据
+     * @return mixed
+     */
+    public function readUnchoosed(){
+        return $this->operateObject->readUnchoosedData();
+    }
     /**
      * 写入更新数据
      * @param $data

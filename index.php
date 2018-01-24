@@ -28,11 +28,11 @@ if($num>0&&$num<6){
     //获取全部座位数据
     $main =new mainDeal(new xmlData("seat.xml"));
     $data = $main->read();
+    $unchoosedDate = $main->readUnchoosed();
     for($i=1;$i<=$num;$i++){
         do{
-            $seatNum = rand(0,7799);
+            $seatNum = array_rand($unchoosedDate,1); // 从未选取座位中随机选取一个座位
         }while($data[$seatNum-1]['ischoosed'] ==1); //数组键值比实际座位大1
-        //设置选中座位状态为已选中
 
         $seat['area']=calArea($seatNum);
         $patwei= NumToSeat($seatNum);
