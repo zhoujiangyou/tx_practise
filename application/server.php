@@ -12,18 +12,54 @@ require_once "data.php";
 class server{
 
     protected $mainDeal;
-    public function __construct($mainDeal)
+    protected $unchoosedAll;
+    protected $bestSeats;
+    protected $comSeats;
+    protected $badSeats;
+    public function __construct(mainDeal $mainDeal)
     {
         $this->mainDeal=$mainDeal;
+        $this->unchoosedAll=$mainDeal->readUnchoosed();
+        $this->bestSeats=$mainDeal->getBest();
+        $this->comSeats=$mainDeal->getCom();
+        $this->badSeats=$mainDeal->getBad();
     }
 
-    //获取一张票逻辑
-    public function buyOne(){
 
-        //判断当前优区是否还有多余票
+    /**
+     * 优区有座位就选出，没有就依次掉级选取
+     * 获取一张票
+     */
+    public function getOne(){
+        if(count($this->bestSeats)>=1){
+            $rand_seat=array_rand($this->bestSeats,1);
+        }else{
+            if(count($this->comSeats)>=1){
+                $rand_seat=array_rand($this->bestSeats,1);
+            }else{
+                $rand_seat=array_rand($this->badSeats,1);
+            }
+        }
+        return $rand_seat;
+    }
+
+    public function getMang($num){
 
 
     }
+
+    /**
+     *
+     * 在给定区域内，随机出一个座位
+     * 查找给定座位上下左右相邻座位。
+     * @param $area
+     */
+    protected  function findNextSeat($area){
+
+
+    }
+
+
 
 
 }
